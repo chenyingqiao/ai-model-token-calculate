@@ -92,6 +92,7 @@ ai-model-token-calculate
 项目结构
 ----------------------------------------
 
+``````
 .
 ├── cmd          - CLI 命令逻辑实现
 ├── tokenizer    - Token 编码与解码逻辑
@@ -99,6 +100,7 @@ ai-model-token-calculate
 ├── test         - 单元测试
 ├── main.go
 └── README.txt
+``````
 
 ----------------------------------------
 许可证

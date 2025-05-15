@@ -95,6 +95,7 @@ To run all unit tests:
 Project Structure
 ----------------------------------------
 
+```
 .
 ├── cmd          - CLI command implementations
 ├── tokenizer    - Token encoding/decoding logic
@@ -102,6 +103,7 @@ Project Structure
 ├── test         - Unit tests
 ├── main.go
 └── README.txt
+```
 
 ----------------------------------------
 License
