@@ -3,6 +3,9 @@ ai-model-token-calculate
 
 A command-line tool written in Go for analyzing OpenAI token usage, including:
 
+📘 中文版本说明请点击：[简体中文 README](README.zh.md)
+
+
 - Token counting for input text or files
 - Decoding token sequences back into strings
 - Estimating token cost based on selected models
