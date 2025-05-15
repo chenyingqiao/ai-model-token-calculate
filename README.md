@@ -1,87 +1,107 @@
 ai-model-token-calculate
 =========================
 
-一个使用 Go 编写的 CLI 工具，用于处理与 OpenAI 模型 token 相关的分析，包括：
+A command-line tool written in Go for analyzing OpenAI token usage, including:
 
-- 文本 token 数量统计
-- token 解码回原始字符串
-- token 成本估算（支持多模型）
-- 支持目录内多文件批量处理
-- 提供基于 Cobra 的子命令结构，方便扩展
-
-----------------------------------------
-功能介绍
-----------------------------------------
-
-功能        : 描述
-------------:-------------------------------------------------
-tokenize    : 对文本或文件进行 token 计数
-decode      : 将 token 序列解码为原始字符串
-cost        : 基于 token 数量估算调用费用
-analyze     : 分析整个目录中的多个 .txt 文件的 token 用量与费用
+- Token counting for input text or files
+- Decoding token sequences back into strings
+- Estimating token cost based on selected models
+- Batch analysis for directories containing text files
+- Extensible subcommand structure using Cobra
 
 ----------------------------------------
-安装使用
+Features
 ----------------------------------------
 
-1. 克隆项目：
+Commands:
+
+  tokenize   - Count tokens from text or file input
+  decode     - Decode a sequence of tokens back to string
+  cost       - Estimate cost based on token count and model price
+  analyze    - Analyze all `.txt` files in a directory (batch tokenize + cost)
+
+----------------------------------------
+Installation & Usage
+----------------------------------------
+
+1. Clone the project:
+
    git clone https://github.com/yourname/ai-model-token-calculate.git
    cd ai-model-token-calculate
 
-2. 安装依赖：
+2. Install dependencies:
+
    go mod tidy
 
-3. 构建 CLI 工具：
+3. Build the CLI tool:
+
    go build -o tokencli
 
 ----------------------------------------
-使用示例
+Examples
 ----------------------------------------
 
-1. 统计文件 token 数量：
+1. Tokenize a file:
+
    ./tokencli tokenize -f input.txt -m gpt-4o -v
 
-2. 统计标准输入：
+2. Tokenize from standard input:
+
    echo "Hello world!" | ./tokencli tokenize -m gpt-3.5
 
-3. 解码 token 序列：
+3. Decode tokens:
+
    ./tokencli decode -t "1212,402,98" -m gpt-4
 
-4. 估算成本：
+4. Estimate cost:
+
    ./tokencli cost -f input.txt -m gpt-4o
 
-5. 批量分析目录：
+5. Analyze all `.txt` files in a directory:
+
    ./tokencli analyze -d ./docs -m gpt-3.5
 
 ----------------------------------------
-支持的模型与价格（每 1k token）
+Supported Models and Prices (per 1,000 tokens)
 ----------------------------------------
 
-模型名         编码器         输入价格($)    输出价格($)
--------------  -------------  -------------  --------------
-gpt-4o         cl100k_base    0.000005       0.000015
-gpt-4          cl100k_base    0.00003        0.00006
-gpt-3.5-turbo  cl100k_base    0.0005         0.0015
+Model:         gpt-4o
+Encoder:       cl100k_base
+Input Price:   $0.000005
+Output Price:  $0.000015
+
+Model:         gpt-4
+Encoder:       cl100k_base
+Input Price:   $0.00003
+Output Price:  $0.00006
+
+Model:         gpt-3.5-turbo
+Encoder:       cl100k_base
+Input Price:   $0.0005
+Output Price:  $0.0015
 
 ----------------------------------------
-测试
+Testing
 ----------------------------------------
 
-运行测试：
-go test ./test/...
+To run all unit tests:
+
+   go test ./test/...
 
 ----------------------------------------
-项目结构
+Project Structure
 ----------------------------------------
 
 .
-├── cmd          # CLI 命令逻辑
-├── tokenizer    # Tokenizer 封装
-├── util         # 工具函数（文件读取等）
-├── test         # 测试用例
+├── cmd          - CLI command implementations
+├── tokenizer    - Token encoding/decoding logic
+├── util         - File reading and utility functions
+├── test         - Unit tests
 ├── main.go
 └── README.txt
 
 ----------------------------------------
-License: MIT
+License
+----------------------------------------
 
+MIT
